@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="CRUD" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/stylesheets/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
+	<link rel="stylesheet" href="/stylesheets/swiper.css" type="text/css" />
+	<link rel="stylesheet" href="/stylesheets/dark.css" type="text/css" />
+	<link rel="stylesheet" href="/stylesheets/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="/stylesheets/animate.css" type="text/css" />
+	<link rel="stylesheet" href="/stylesheets/magnific-popup.css" type="text/css" />
+
+	<link rel="stylesheet" href="/stylesheets/responsive.css" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- Document Title
+	============================================= -->
+    <title>Mysample | CRUD</title>
+
+</head>
+
+<body class="stretched">
+
+<!-- Document Wrapper
+============================================= -->
+<div id="wrapper" class="clearfix">
+
+  <!-- Header
+  ============================================= -->
+  <header id="header" class="transparent-header full-header dash-nav" data-sticky-class="not-dark">
+
+    <div id="header-wrap">
+
+      <div class="container clearfix">
+
+        <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+        <!-- Logo
+        ============================================= -->
+
+        <!-- Primary Navigation
+        ============================================= -->
+        <nav id="primary-menu" class="dark">
+
+          <ul>
+						<li {%if path == '/dashboard'%}class="active"{%endif%}><a href="/dashboard">Home</a></li>
+						<li {%if path == '/sample'%}class="active"{%endif%}><a href="/sample">My Sample</a></li>
+
+
+
+
+
+
+                          <li><a href="#">Accounts
+                              <ul>
+                          <li {%if path == '/profile'%}class="active"{%endif%}><a href="/profile">Profile</a></li>
+                          <li {%if path == '/billing'%}class="active"{%endif%}><a href="/billing">Billing</a></li>
+                          <li {%if path == '/password'%}class="active"{%endif%}><a href="/password">Change Password</a></li>
+                          <li {%if path == '/delete'%}class="active"{%endif%}><a href="/delete">Delete Account</a></li></ul>
+                          </li>
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                          <li><a href="/logout">Logout</a></li>
+                      </ul>
+
+          <!-- Top Search
+          ============================================= -->
+          <div id="top-search">
+            <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+            <form action="search.html" method="get">
+              <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+            </form>
+          </div><!-- #top-search end -->
+
+        </nav><!-- #primary-menu end -->
+
+      </div>
+
+    </div>
+
+  </header><!-- #header end -->
+	<section id="page-title">
+
+		<div class="container clearfix">
+			<h1>Mysample</h1>
+		</div>
+
+	</section><!-- #page-title end -->
+
+	<div class="container content">
+
+
+	<ul id="portfolio" class="portfolio grid-container clearfix fabricUl">{{#each user.sample}}
+
+	<li class="portfolio-item {{brand}}">
+	<div class="portfolio-image">
+		<a href="/sample-edit/{{this.id}}">
+			<img src="https://s3.amazonaws.com/sewing-uploadsdb/1520397271852field-banner.gif" alt="Open Imagination">
+		</a>
+		<div class="portfolio-overlay">
+			<a href="https://s3.amazonaws.com/sewing-uploadsdb/1520397271852field-banner.gif" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
+			<a href="/sample-edit/{{this.id}}" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+		</div>
+	</div>
+	<div class="portfolio-desc">
+		<h3><a href="/sample-edit/{{this.id}}">{{name}}</a></h3>
+		<span><a href="/sample-edit/{{this.id}}">{{brand}}</a></span>
+	</div>
+	{{/each}}
+
+</li>
+</ul>
+
+<a href="/sample-image" class="btn btn-primary add right">Add a Sample</a>
+
+
+
+
+<!--
+		<ul class="fabricUl">{{#each user.sample}}
+			<a href="/edit/{{this.id}}">
+		  <li class="fabric-list">
+				<div class="container">
+				<div class="col-lg-12">
+					<div class="col-lg-12" style="float-left">
+				<div class="image-fab"><img src="https://s3.amazonaws.com/sewing-uploadsdb/1520397271852field-banner.gif"></div>
+				<div style="padding-top: 20px;">Name of Fabric: {{name}}</div>
+				<div>Fabric Description: {{description}}<a href="/sample-edit" class="btn btn-primary right">Edit Details</a></div>
+				<div>Where you bought it: {{purchase}}</div>
+				<div>Type of fabric: {{material}}</div>
+				<div>Brand of fabric: {{brand}}</div>
+				<div>Notes: {{notes}}</div>
+				<div>How much you have left: {{qty}}</div>
+			 </div>
+		 </div>
+		{{/each}}
+	</li>
+
+</a>
+		</ul>
+
+	-->
+
+
+  {{#contains user.stripe.plan "free"}}
+    {{/contains}}
+
+    {{#contains user.stripe.plan "silver"}}
+    {{/contains}}
+
+    {{#contains user.stripe.plan "gold"}}
+    {{/contains}}
+
+    {{#contains user.stripe.plan "platinum"}}
+    {{/contains}}
+
+</div>
+
+<!-- Footer
+============================================= -->
+<footer id="footer" class="dark">
+
+  <div class="container">
+
+    <!-- Footer Widgets
+    ============================================= -->
+    <div class="footer-widgets-wrap clearfix">
+
+      <div class="col_two_third">
+
+        <div class="col_one_third">
+
+          <div class="widget clearfix">
+
+                                <abbr title="Phone Number"><strong>Phone:</strong></abbr> (620) 333 4049<br>
+              <abbr title="Email Address"><strong>Email:</strong></abbr> info@CRUD.com
+
+          </div>
+
+        </div>
+
+        <div class="col_one_third">
+
+        </div>
+
+        <div class="col_one_third col_last">
+
+        </div>
+
+      </div>
+
+      <div class="col_one_third col_last">
+
+        <div class="widget subscribe-widget clearfix">
+          <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
+          <div class="widget-subscribe-form-result"></div>
+          <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin">
+            <div class="input-group divcenter">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="icon-email2"></i></div>
+              </div>
+              <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
+              <div class="input-group-append">
+                <button class="btn btn-success" type="submit">Subscribe</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="widget clearfix" style="margin-bottom: -20px;">
+
+          <div class="row">
+
+            <div class="col-lg-6 clearfix bottommargin-sm">
+              <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
+                <i class="icon-facebook"></i>
+                <i class="icon-facebook"></i>
+              </a>
+              <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+            </div>
+
+                            <div class="col-lg-6 clearfix bottommargin-sm">
+              <a href="#" class="social-icon si-dark si-colored si-pinterest nobottommargin" style="margin-right: 10px;">
+                <i class="icon-pinterest"></i>
+                <i class="icon-pinterest"></i>
+              </a>
+              <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Pinterest</small></a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div><!-- .footer-widgets-wrap end -->
+
+  </div>
+
+  <!-- Copyrights
+  ============================================= -->
+  <div id="copyrights">
+
+    <div class="container clearfix">
+
+      <div class="col_half">
+        <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
+      </div>
+
+      <div class="col_half col_last tright">
+        <div class="fright clearfix">
+          <a href="#" class="social-icon si-small si-borderless si-facebook">
+            <i class="icon-facebook"></i>
+            <i class="icon-facebook"></i>
+          </a>
+
+          <a href="#" class="social-icon si-small si-borderless si-twitter">
+            <i class="icon-twitter"></i>
+            <i class="icon-twitter"></i>
+          </a>
+
+                        <a href="#" class="social-icon si-small si-borderless si-pinterest">
+            <i class="icon-pinterest"></i>
+            <i class="icon-pinterest"></i>
+          </a>
+
+        </div>
+
+        <div class="clear"></div>
+
+        <i class="icon-envelope2"></i> info@CRUD.com <span class="middot">&middot;</span> <i class="icon-headphones"></i>
+      </div>
+
+    </div>
+
+  </div><!-- #copyrights end -->
+
+</footer><!-- #footer end -->
+
+</div><!-- #wrapper end -->
+
+<!-- Go To Top
+============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+
+<!-- External JavaScripts
+============================================= -->
+<script src="javascripts/jquery.js"></script>
+<script src="javascripts/plugins.js"></script>
+
+<!-- Footer Scripts
+============================================= -->
+<script src="javascripts/functions.js"></script>
+
+</body>
+</html>
